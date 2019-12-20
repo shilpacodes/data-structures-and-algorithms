@@ -1,0 +1,30 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        boolean overflow = true;
+        int index = digits.length-1;
+        while(overflow && index >= 0){
+            
+            int check = digits[index]+1;
+            System.out.println(check);
+            if(check >= 10){
+                digits[index] = 0;
+                overflow = true;
+                index--;
+            }
+            else{
+                digits[index]++;
+                overflow = false;
+            }
+        }
+        if(index == -1){
+                int [] newArr = new int[digits.length+1];
+                newArr[0] = 1;
+                for(int i = 1; i < newArr.length; i++){
+                    newArr[i] = digits[i-1];
+                }
+            return newArr;
+            }
+        return digits;
+    }
+    
+}
