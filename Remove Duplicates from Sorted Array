@@ -1,0 +1,26 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int len = 0;
+        int i = 0;
+        
+        //For element starting at 0, we skip its duplicates
+        while(i < nums.length){
+            int count = 1;
+            int k = i+1;
+            
+            //Every element after i that's a duplicate will be skipped
+            while(k < nums.length && nums[k] == nums[i]){
+                count++;
+                k++;
+            }
+            
+            //Element at the left most index will be the next unique one
+            nums[len] = nums[i];
+            len++;
+            
+            //Skip over the duplicates
+            i+= count;
+        }
+        return len;
+    }
+}
